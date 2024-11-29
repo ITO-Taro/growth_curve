@@ -71,6 +71,7 @@ def calculate_weight_for_percentile(age, percentile, df):
     Returns:
         float: The weight corresponding to the percentile.
     """
+    percentile = float(percentile)
     # Find the closest age in the dataset
     row = df.loc[df['Month'] == age]
     if row.empty:
@@ -110,3 +111,26 @@ res_msg = f"For a {age}-month-old girl weighing {weight} kg, the weight correspo
 st.markdown(f"<h3 style='font-size:30px;'>{percentile_rounded}th percentile</h3>", unsafe_allow_html=True)
 
 st.write(res_msg)
+
+percentile_to_plot = percentile_rounded
+
+ages = df['Month']
+
+weights = [round(calculate_weight_for_percentile(age, percentile_to_plot, df), 2) for age in ages]
+weights = [w for w in weights if w is not None]
+
+# Plot the curve
+plt.figure(figsize=(25, 32))
+plt.plot(ages, weights, label=f'{percentile_to_plot}th Percentile', color='blue')
+plt.title("Weight-for-Age Percentile Curve", fontsize=14)
+plt.xlabel("Age (Months)", fontsize=12)
+plt.ylabel("Weight (kg)", fontsize=12)
+plt.xticks(np.arange(ages.min(), ages.max() + 1, 1))  # Optional: Tick every 6 months
+plt.yticks(np.arange(min(weights), max(weights) + 0.1, 0.2))  # Tick every 0.5 kg
+plt.legend(fontsize=10)
+plt.legend(fontsize=10)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.tight_layout()
+
+# Display the plot
+st.pyplot(plt)
