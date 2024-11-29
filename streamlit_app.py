@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 #     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 # )
 
-data_path = "/workspaces/growth_curve/data/"
+# data_path = "/workspaces/growth_curve/data/"
 
 # names = os.listdir(data_path)
 
@@ -92,7 +92,7 @@ def calculate_weight_for_percentile(age, percentile, df):
 
     return weight
 
-df = pd.read_csv(data_path+'weight.csv')
+df = pd.read_csv('data/'+'weight.csv')
 
 # Example usage
 # age, weight = 13, 7.8
