@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 #     "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
 # )
 
-data_path = "/workspaces/growth_curve/assets/data/"
+data_path = "/workspaces/growth_curve/data/"
 
 # names = os.listdir(data_path)
 
