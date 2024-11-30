@@ -120,7 +120,7 @@ weights = [round(calculate_weight_for_percentile(age, percentile_to_plot, df), 2
 weights = [w for w in weights if w is not None]
 
 # Plot the curve
-plt.figure(figsize=(25, 32))
+plt.figure(figsize=(15, 15))
 plt.plot(ages, weights, label=f'{percentile_to_plot}th Percentile', color='blue')
 plt.title("Weight-for-Age Percentile Curve", fontsize=14)
 plt.xlabel("Age (Months)", fontsize=12)
